@@ -407,6 +407,11 @@ class GeminiMultimodalLiveLLMService(LLMService):
                 {
                     "setup": {
                         "model": self._model_name,
+                        "realtimeInputConfig": {
+                            "automaticActivityDetection": {
+                                "disabled": True
+                            }
+                        },
                         "generation_config": {
                             "frequency_penalty": self._settings["frequency_penalty"],
                             "max_output_tokens": self._settings["max_tokens"],  # Not supported yet

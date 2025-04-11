@@ -36,7 +36,9 @@ class Turn(BaseModel):
 
 
 class RealtimeInput(BaseModel):
-    mediaChunks: List[MediaChunk]
+    mediaChunks: Optional[List[MediaChunk]] = None
+    activityStart: Optional[dict] = None
+    activityEnd: Optional[dict] = None
 
 
 class ClientContent(BaseModel):
@@ -83,11 +85,14 @@ class Setup(BaseModel):
     system_instruction: Optional[SystemInstruction] = None
     tools: Optional[List[dict]] = None
     generation_config: Optional[dict] = None
+    realtimeInputConfig: Optional[dict] = None
 
 
 class Config(BaseModel):
     setup: Setup
 
+class RealtimeInputMessage(BaseModel):
+    realtimeInput: RealtimeInput
 
 #
 # Server events
